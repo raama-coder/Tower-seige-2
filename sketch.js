@@ -29,14 +29,12 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
+
   background("white");
   
   ground1.display();
   hexagon.display();
   launcher.display();
-
-  setDetectCollision(boxes1) 
-  setDetectCollision(boxes2)
 
  displayPyBox(boxes1)
  displayPyBox(boxes2)
@@ -57,15 +55,7 @@ function keyPressed(){
   }
 }
 
-function detectCollision(b,h){
-	bp=b.body.position;
-	hp=h.body.position;
 
-	d=dist(bp.x, bp.y, hp.x, hp.y);
-	if(d<=b.w+h.r){
-		Body.setStatic(b.body, false)
-	}
-}
 
 function createBoxPy (ar,x,y,boxWidth,rows){
 
@@ -91,11 +81,5 @@ function createBoxPy (ar,x,y,boxWidth,rows){
 function displayPyBox(ar) {
   for (i=0; i<ar.length; i++){
     ar[i].display()
-  }
-}
-function setDetectCollision(ar) {
-  for (i=0; i<ar.length; i++){
-    detectCollision(ar[i],hexagon);
-
   }
 }

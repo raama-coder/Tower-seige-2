@@ -3,13 +3,13 @@ class Box{
         this.x=x
         this.y=y
         this.w=width
-       this.col=fillCol
-       this.visbility = 255
+        this.visbility = 255
+        this.col=fillCol
 
         var option={
             restitution: 0,
-            friction:1,
-            density:0.0000000000000000000000000000000000000000000000000000000000000000000000001,
+            friction:0,
+            density:0.001,
             isStatic: false
         }
 
@@ -20,20 +20,18 @@ display() {
   var boxPos=this.body.position
 
 
-console.log(this.body.speed);
-
-if(this.body.speed>6){
-  World.remove(world, this.body)
+if(this.body.speed>=3){
   push()
   tint(255, this.visbility)
-  this.visbility=this.visbility-5
+  this.visbility=this.visbility-1
   pop()
+  World.remove(world, this.body)
 }
 
 else{
-rectMode(CENTER) 
-strokeWeight(1);
-fill(this.col); 
-rect(boxPos.x,boxPos.y,this.w,this.w)}
+  strokeWeight(1); 
+  fill(this.col);
+  rectMode(CENTER) 
+  rect(boxPos.x,boxPos.y,this.w,this.w)}
 }
 }
